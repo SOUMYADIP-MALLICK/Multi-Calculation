@@ -1,0 +1,15 @@
+:root {
+  --bg-black: #171a2b;
+  --violet-pink: #c333b6;
+  --violet: #973bc1;
+  --violet-rgba: rgba(151, 59, 193, 0.7);
+  --blue: #32a8fe;
+  --green: #5bf075;
+  --green-rgba: rgba(91, 240, 117, 0.7);
+  --red: #e63d43;
+  --yellow: #f6c622;
+  --white: rgba(255, 255, 245, .8);
+  --white-rgba: rgba(255, 255, 245, .5);
+  --br-radius: 5px;
+  --text-size: 1.6rem;
+}
