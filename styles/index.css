@@ -321,7 +321,7 @@
   content: "";
   display: block;
   position: absolute;
-  animation: box-animate 0.8s ease-in-out infinite alternate;
+  animation: box-animate 0s ease-in-out infinite alternate;
 }
 
 .footer__boxs-item::before {
