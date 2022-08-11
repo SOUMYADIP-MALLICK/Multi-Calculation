@@ -137,19 +137,19 @@ let calculator_buttons = [
 	},
 	{
 		name: "acos",
-		symbol: "acos",
+		symbol: "cos⁻¹",
 		formula: "inv_trigo(Math.acos,",
 		type: "trigo_function",
 	},
 	{
 		name: "asin",
-		symbol: "asin",
+		symbol: "sin⁻¹",
 		formula: "inv_trigo(Math.asin,",
 		type: "trigo_function",
 	},
 	{
 		name: "atan",
-		symbol: "atan",
+		symbol: "tan⁻¹",
 		formula: "inv_trigo(Math.atan,",
 		type: "trigo_function",
 	},
