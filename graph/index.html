@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Graph Calculator</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-7" id="cContainer">
+					<canvas id="btdCanvas" width ="532" height="532"></canvas>
+				</div>
+				<div class="col-md-5">
+					<h1>Graph Calculator</h1>
+					<form id="settingsForm">
+						<div class="row">
+							<div class="col-sm-4">
+								<fieldset class="form-group">
+									<legend></legend>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" name="renderType" id="useSecantRendering" checked>
+											Manage the scale
+										</label>								
+								</fieldset>
+									<div class="form-check">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" name="interpType" id="useJSInterpretation" checked>
+											Plot the functions
+										</label>
+									</div>
+								</fieldset>
+							</div>
+
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="divisionCount">Number of Grids</label>
+									<input type="number" class="form-control form-control-sm" id="divisionCount" value=8>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="plotDensity">linear to scatter plot change</label>
+									<input type="number" class="form-control form-control-sm" id="plotDensity" value=1>
+								</div>
+								<div class="form-group">
+									<label for="modifierZoom">Combined zoom</label>
+									<input type="number" class="form-control form-control-sm" id="modifierZoom" value=8>
+								</div>
+								<div class="form-group">
+									<label for="modifierZoomX">X axis zoom</label>
+									<input type="number" class="form-control form-control-sm" id="modifierZoomX" value=4>
+								</div>
+								<div class="form-group">
+									<label for="modifierZoomY">Y axis zoom</label>
+									<input type="number" class="form-control form-control-sm" id="modifierZoomY" value=4>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="axisStrokeWeight">Line density of the axis</label>
+									<input type="number" class="form-control form-control-sm" id="axisStrokeWeight" value=2>
+								</div>
+								<div class="form-group">
+									<label for="graphStrokeWeight">Line density of the grids</label>
+									<input type="number" class="form-control form-control-sm" id="graphStrokeWeight" value=1>
+								</div>
+								<div class="form-group">
+									<label for="functionStrokeWeight">Density of the plot line</label>
+									<input type="number" class="form-control form-control-sm" id="functionStrokeWeight" value=4>
+								</div>
+								<div class="form-group">
+									<label for="labelTextSize">size of the numbers</label>
+									<input type="number" class="form-control form-control-sm" id="labelTextSize" value=10>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="functionText" id="mathJSfunctionHint">Write the finction which graph you want : </label>
+									<label for="functionText" id="JSfunctionHint">Write the function to see the graph : &mdash;</label>
+									<textarea class="form-control" id="functionText" rows="6">Math.cos(x)&#10;x*2&#10;Math.pow(x,x)&#10;Math.log(x)&#10;2/(x-4)</textarea>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script>
+		<script src="btd.js"></script>
+	</body>
+</html>
