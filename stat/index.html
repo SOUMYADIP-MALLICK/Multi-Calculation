@@ -1,56 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>JSMatrix calculador</title>
-  <script src="./MatrixCalculator.js"></script>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./style1.css">
-</head>
 
-<body>
-  <header><img src="./logo.gif" alt="Page logo JSMatrix Calculator"/></header>
-  <div id="upper">
-    <div id="matrix1" class="parent">
-      <h1 class="title">Matrix A</h1>
-      <input class="m1r1" type="text" value="0"/>
-      <input class="m1r1" type="text" value="0"/>
-      <input class="m1r1" type="text" value="0"/>
-      <input class="m1r2" type="text" value="0"/>
-      <input class="m1r2" type="text" value="0"/>
-      <input class="m1r2" type="text" value="0"/>
-      <input class="m1r3" type="text" value="0"/>
-      <input class="m1r3" type="text" value="0"/>
-      <input class="m1r3" type="text" value="0"/>   
-      <div class="functions">
-        <input class="function" type="button" value="Determinant" onclick="mc.calculateDeterminant()"/>
-        <input class="function" type="button" value="Transpose" onclick="mc.transposeMatrix()"/>
-        <input class="function" type="button" value="Invert" onclick="mc.invertMatrix()"/>
-        <input class="function" type="button" value="Rank" onclick="mc.calculateRank()"/>
-      </div>
-    </div>
-    <div id="operations">
-      <input class="operation" type="button" value="A x B" onclick="mc.multiplyMatrix()"/>
-      <input class="operation" type="button" value="A + B" onclick="mc.addMatrix()"/>
-      <input class="operation" type="button" value="A - B" onclick="mc.subtractMatrix()"/>
-    </div>
-    <div id="matrix2" class="parent">
-      <h1 class="title">Matrix B</h1>
-      <input class="m2r1" type="text" value="0"/>
-      <input class="m2r1" type="text" value="0"/>
-      <input class="m2r1" type="text" value="0"/>
-      <input class="m2r2" type="text" value="0"/>
-      <input class="m2r2" type="text" value="0"/>
-      <input class="m2r2" type="text" value="0"/>
-      <input class="m2r3" type="text" value="0"/>
-      <input class="m2r3" type="text" value="0"/>
-      <input class="m2r3" type="text" value="0"/>   
-    </div>
-  </div>
-  <br>
-  <div id="lower">
-      <textarea wrap="soft" rows="10" cols="20" id="console" disabled></textarea>
-  </div>
-  
-</body>
-</html>
+<html>
+<head>
+
+<div id="app">
+  <div>
+        <style>
+        p{text-align: center;}
+    </style>
+    <link rel="stylesheet" href=".\style.css">
+    <link rel="stylesheet" href=".\style1.css">
+    <textarea cols="100" rows="5" v-model="input" style="font-family: Verdana; font-weight: bold; font-size: 12px; background-color: lightgreen;" size="100" autofocus></textarea><br />
+    <input type=button value="Calculate" @click="calculate(this.form)" class="btn-right"><br />
+    </p>
+  <table>
+    <tr>
+      <td><strong>Count</strong></td>
+      <td><input type="text" v-model="count" size="20" class="cal" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Sum</strong></td>
+      <td><input type="text" v-model="sum" class="cal" size="20" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Mean</strong></td>
+      <td><input type="text" v-model="mean" class="cal" size="20" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Median</strong></td>
+      <td><input type="text" v-model="median" class="cal" size="20" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Mode</strong></td>
+      <td><input type="text" v-model="mode" class="cal" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Minimum</strong></td>
+      <td><input type="text" v-model="minimum" class="cal" size="20" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Maximum</strong></td>
+      <td><input type="text" v-model="maximum" class="cal" size="20" readonly></td>
+    </tr>
+    <tr>
+      <td><strong>Range</strong></td>
+      <td><input type="text" v-model="range" class="cal" readonly></td>
+    </tr>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.js"></script>
+</div>
+</div>
+      <script src="script.js"></script>
+  </html>
