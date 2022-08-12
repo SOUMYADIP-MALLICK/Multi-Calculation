@@ -4,18 +4,6 @@ body {
   background-position: center;
   background-size: 100%;}
 
-#con {
-  height: 470px;
-  width: 600px;
-  margin: 100px auto;
-  background: #008000;
-  box-shadow: 5px 5px 5px 5px rgba(0,100,0);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 60px;
-  background: linear-gradient(to left, #008000, #1e1617);
-  opacity: 0.948;
-}
-
 #loading, #results {
     display: none;
 }
