@@ -1,6 +1,6 @@
 body {
   font-family: Roboto;
-  background-image: url("gif.gif");
+  background-image: url("./gif.gif");
   background-position: center;
   background-size: 100%;}
 
@@ -79,7 +79,7 @@ p2{
 @media only screen and (max-device-width: 480px) {
   body {
   font-family: Roboto;
-  background-image: url("gif.gif");
+  background-image: url("./gif.gif");
   background-position: center;
   width :100%;
   background-size: 100%;
