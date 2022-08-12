@@ -1,44 +1,148 @@
-<title>BMI Calculator</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="bmi.css">
-<link rel="icon" href="apple.png" type="image/icon type">
-<style>
-h1 {text-align: center;}
-  </style>
-<div id="con">
-  <h1>BMI Calculator</h1>
-  <div id="cacl">
-    <form>
-      
-      <br><br>
-      <p1>Weight :</p1>
-      <input id="we" type="text" name="weight" placeholder="Your weight">
-      <p2>in</p2>
-      <select id="units">
-      <option disabled selected value="kg">kg</option>
-      <option value="lbs">lbs</option>
-      <option value="kg">kg</option>
-      </select>
-      <br><br>
-      <p1>Height:</p1>
-      <input id="he" type="text" name="height" placeholder="Your height">
-      <p2>in</p2>
-      <select id="unith">
-      <option disabled selected value="cms">cms</option>
-      <option value="inches">inches</option>
-      <option value="cms">cms</option>
-      </select>
-      <br><br>
-      <button type="button" id="calculate">Calculate</button>
-      <br><br>
-      <div id="tipd">
-      <span id="tip"></span>
-      <span id="tip2"></span>
-      <span id="tip3"></span>
-      <br><br>
-      
-      <span id="tip4"></span></div>
+body {
+  font-family: Roboto;
+  background-image: url("gif.gif");
+  background-position: center;
+  background-size: 100%;}
 
-    </form>
-  </div>
-<script type="text/javascript" src="bmi.js"></script>
+#con {
+  height: 470px;
+  width: 600px;
+  margin: 100px auto;
+  background: #008000;
+  box-shadow: 5px 5px 5px 5px rgba(0,100,0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 60px;
+  background: linear-gradient(to left, #008000, #1e1617);
+  opacity: 0.948;
+}
+h1 {
+  background: #006400;
+  color: white;
+  margin: 0;
+  padding-left: 210;
+  padding-top: 20;
+  padding-bottom: 20;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: large;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+p1 {
+  padding-left: 20px;
+  color: white;
+}
+
+form input[type="text"] {
+  width=90px;
+  margin-left: 23px;
+}
+input {
+  padding-left: 20px;
+}
+#we {
+  font-size: 14px;
+  background-color: #FFFF00;
+  padding: 5px 5px 8px 8px;
+  border-radius: 3px;
+  width: 30%;
+  margin-left: 12;
+}
+
+#he {
+  font-size: 14px;
+  background-color: #FFFF00;
+  padding: 5px 5px 8px 8px;
+  border-radius: 3px;
+  width: 30%;
+  margin-left: 15;
+}
+#tip3{
+  width: 10;
+  color: white;
+}
+#tipd{
+  width: 540px;
+  color: white;
+  margin-left: 20;
+}
+#units {
+  width: 14%;
+}
+#unith {
+  width: 14%;
+}
+p2{
+     color: white;
+    }
+@media only screen and (max-device-width: 480px) {
+  body {
+  font-family: Roboto;
+  background-image: url("gif.gif");
+  background-position: center;
+  width :100%;
+  background-size: 100%;
+}
+#con {
+  height: 95%;
+  width: 85%;
+  margin: 5% 5% 5% 5%;
+  background: #008000;
+  box-shadow: 5px 5px 5px 5px rgba(0,100,0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 60px;
+  background: linear-gradient(to left, #008000, #1e1617);
+  opacity: 0.948;
+}
+h1 {
+  background: #006400;
+  color: white;
+  padding-left: 20%;
+  padding-top: 20;
+  padding-bottom: 20;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: normal;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+p2{
+     padding-left: 10%;
+     color: white;
+    }
+  #units{ 
+width:25%; }
+
+#unith{
+width:25%; }
+#tipd{
+  width: 80%;
+  color: white;
+  font-size: 80%;
+  margin-left: 20;
+}
+}
+@media only screen and (max-device-width: 362px){
+
+  #we {
+  font-size: 11px;
+  background-color: #FFFF00;
+  padding: 5px 5px 8px 8px;
+  border-radius: 3px;
+  width: 27%;
+  margin-left: 12;
+}
+
+#he {
+  font-size: 11px;
+  background-color: #FFFF00;
+  padding: 5px 5px 8px 8px;
+  border-radius: 3px;
+  width: 27%;
+  margin-left: 15;
+}
+}
+button{
+  margin-left: 20;
+}
