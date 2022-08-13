@@ -1,0 +1,121 @@
+const resultField = document.querySelector('#result p');
+const btnAdd = document.querySelector('#btn-add');
+const btnCalc = document.querySelector('#calc');
+const fieldTimes = document.querySelector('#field-times');
+let indexField = 1;
+
+
+// ASSIGNMENT: Operator Button Change
+const nextOperator = (element, index) => {
+  const operators = ['+', '-', 'x', '/'];
+  const valuesOperations = ['sum', 'sub', 'mult', 'div'];
+
+  element.innerHTML = operators[index];
+  element.setAttribute('data-operator', index);
+  element.setAttribute('value', valuesOperations[index]);
+}
+
+const handleMultiplicationOrDivision = (element, indexOperator) => {
+  const indexInput = element.getAttribute('data-index');
+  const currentInput = document.querySelector('#index-'+indexInput);
+
+  if (indexOperator != 2 && indexOperator != 3){
+    currentInput.setAttribute('type', 'time');
+    currentInput.value = '00:00:00';
+  }else {
+    currentInput.removeAttribute('value');
+    currentInput.setAttribute('type', 'number');
+    currentInput.setAttribute('min', '1');
+    currentInput.setAttribute('max', '1000');
+    currentInput.value = '2';
+  }
+}
+
+const changeOperator = element => {
+  let indexOperator = element.getAttribute('data-operator');
+  indexOperator = indexOperator < 3 ? ++indexOperator : 0;
+
+  nextOperator(element, indexOperator);
+  handleMultiplicationOrDivision(element, indexOperator);
+}
+
+// ASSIGNMENT: Calculation and Result Display
+const OperationsReduce = {
+  'sum': (op1, op2) => {
+    return op1 + op2
+  },
+  'sub': (op1, op2) => {
+    return op1 - op2
+  },
+  'mult': (op1, op2) => {
+    return op1 * op2
+  },
+  'div': (op1, op2) => {
+    return op1 / op2
+  }
+};
+
+const handleConvertDecimal = value => {
+  let r = Math.round((value / (100 / 60)) * 100);
+  return r;
+}
+
+const convertToHours = (total) => {
+  let seconds = (total / 60) - parseInt(total / 60);
+  seconds = handleConvertDecimal(seconds);
+  total = parseInt(total / 60);
+
+  let minutes = (total / 60) - parseInt(total / 60);
+  minutes = handleConvertDecimal(minutes);
+  total = parseInt(total / 60);
+
+  let hours = total;
+
+  return {
+    hours,
+    minutes,
+    seconds
+  }
+}
+
+const convertToSeconds = (arr) => {
+  if (arr.length === 1) {
+    return parseFloat(arr[0])
+  }else if (arr.length === 2) {
+    return (parseInt(arr[0]) * 60 + parseInt(arr[1])) * 60;
+  }else if (arr.length === 3) {
+    return ((parseInt(arr[0]) * 60 + parseInt(arr[1])) * 60) + parseInt(arr[2]);
+  }
+}
+
+const handleCalculation = () => {
+  const inputs = document.querySelectorAll('.input');
+  const valuesOperators = Array.from(document.querySelectorAll('.operator')).map(operator => operator.value);
+  let valuesInput = [];
+  
+  inputs.forEach(input => {
+    valuesInput.push(input.value.split(':'));
+  });
+  
+  valuesInput = valuesInput.map(value => convertToSeconds(value));
+  
+  const result = valuesInput.reduce((acc, curr, index) => {
+    let r = OperationsReduce[valuesOperators[index-1]](acc, curr);
+    return r;
+  })
+
+  return convertToHours(result);
+}
+
+const handleDisplayResult = () => {
+  const result = handleCalculation();
+  const hoursField = resultField.querySelector('#hour');
+  const minutesField = resultField.querySelector('#min');
+  const secondsField = resultField.querySelector('#sec');
+
+  hoursField.innerHTML = result.hours;
+  minutesField.innerHTML = result.minutes;
+  secondsField.innerHTML = result.seconds;
+}
+
+btnCalc.addEventListener('click', handleDisplayResult);

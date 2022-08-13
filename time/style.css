@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+*
+body {
+	font-family: "Roboto", sans-serif;
+	background-color: #f7f7f7;
+	background-image: url("./img.gif");
+
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+:root {
+  --btn-delete: rgb(229, 33, 33);
+  --btn-delete-hover: rgb(192, 28, 28);
+  --btn-add: rgb(28, 185, 34);
+  --btn-add-hover: rgb(19, 129, 22);
+  --btn-operator: rgb(18, 131, 155);
+  --btn-operator-hover: rgb(18, 116, 138);
+  --bg-wrapper: rgb(252, 252, 252);
+  --bg-result: rgb(242, 242, 242);
+  --border: rgb(224, 224, 224);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.4s linear;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--btn-operator);
+}
+
+input {
+  font-size: 1.2em;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--bg-result);
+}
+
+input[type=time] {
+  padding: 5px 0px 5px 12%;
+}
+
+input[type=number] {
+  padding: 5px 0px 5px 0;
+}
+
+input, button {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-size: 2.4em;
+  font-weight: 700;
+}
+
+.container, .wrapper {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  background-color: var(--bg-wrapper);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 15px 0;
+}
+
+#result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--bg-result);
+  width: 80%;
+  height: 40px;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+#hour-text, #min-text, #sec-text {
+  color: var(--btn-operator);
+  font-size: 1.1rem;
+  margin-left: -5px;
+}
+
+table {
+  width: 90%;
+  margin-bottom: 15px;
+  border-spacing: 10px;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate(-10%);
+  }
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+tr {
+  animation: show 0.3s linear;
+}
+
+td {
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  color: var(--bg-wrapper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#btn-add {
+  background-color: var(--btn-add);
+}
+#btn-add:hover {
+  background-color: var(--btn-add-hover);
+}
+
+.btn-delete {
+  background-color: var(--btn-delete);
+}
+.btn-delete:hover {
+  background-color: var(--btn-delete-hover);
+}
+
+.operator, #calc {
+  background-color: var(--btn-operator);
+}
+.operator:hover, #calc:hover {
+  background-color: var(--btn-operator-hover);
+}
+
+#calc {
+  height: 40px;
+  width: 120px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}

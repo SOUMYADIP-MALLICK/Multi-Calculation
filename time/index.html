@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Calculator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title">
+      <h1 style="color:red;">Time Calculator</h1>
+    </div>
+    <div class="wrapper">
+      <div id="result">
+        <p>
+          <span id="hour">00</span>
+          <span id="hour-text">hour</span>
+          <span id="min">00</span>
+          <span id="min-text">min</span>
+          <span id="sec">00</span>
+          <span id="sec-text">sec</span>
+        </p>
+      </div>
+      <table>
+        <tbody id="field-times">
+          <tr class="input-wrapper primary">
+            <td></td>
+            <td>
+              <input 
+              type="time" 
+              class="input" 
+              step="2" 
+              value="00:00:00">
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="input-wrapper">
+            <td id="elt">
+              <button class="btn operator" 
+              onclick="changeOperator(this)"
+              data-operator="0"
+              data-index="0"
+              value="sum">+</button>
+            </td>
+            <td>
+              <input 
+              type="time" 
+              class="input" 
+              step="2" 
+              value="00:00:00" 
+              id="index-0">
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="calc">Go</button>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
