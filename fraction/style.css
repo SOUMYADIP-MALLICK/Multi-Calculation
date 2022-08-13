@@ -1,0 +1,97 @@
+*
+body {
+	font-family: "Roboto", sans-serif;
+	background-color: #f7f7f7;
+	background-image: url("./img.gif");
+
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* general */
+.line {
+  height: 3px;
+  width: 50px;
+  background-color: #800000;
+  margin: 10px auto;
+}
+input, select, button {
+  text-align: center;
+  width: 50px;
+  border: 3px #800080 solid;
+  font-size: 1rem;
+  outline: none;
+}
+/* ---- */
+
+h1 {
+  text-align: center;
+  margin: 2rem auto;
+  width: 20rem;
+  padding: 8px;
+  border-radius: 5px;
+  background-color:#800080 ;
+  color: #fff;
+  cursor: default;
+}
+
+.grid-item {
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 0.09fr);
+} .grid-item button{
+  grid-column: 2 / 3;
+  width: 6rem;
+  margin-top: 1rem;
+  height: 2rem; 
+  cursor: pointer;
+  background-color: #800080;
+  color: #fff;
+
+} .grid-item button:hover {
+  background-color: #800080;
+} .grid-item select#operator {
+  font-size: 0.8rem;
+  width: 3rem;
+  margin: auto;
+}
+
+section#result {
+  margin: 5rem auto;
+  text-align: center;
+} section#result h1{
+  width: 10rem;
+} section#result .fraction-result {
+  position: relative;
+  display: inline-block;
+} section#result .fraction-result input {
+  border: none;
+  font-size: 1.5rem;
+} section#result .fraction-result input.wholeNumber {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+}
+
+#fraction-figure {
+  margin: 1rem; 
+  display: flex;
+} 
+
+@media screen and (max-width: 748px) {
+  .grid-item {
+    grid-template-columns: repeat(3, 0.15fr);
+  }
+
+}
