@@ -1,191 +1,117 @@
-const inputDiv = document.getElementById("input");
-const outputDiv = document.getElementById("output");
+/* 
+TODO: 
+- select all needy elements from dom 
+- set today date as default date
+- create a function for get value from input date
+- calling all necessary function 
+*/
 
-const inputDate1 = document.getElementById("date1");
-const inputDate2 = document.getElementById("date2");
-const selectBirthMonth = document.getElementById("birth-month");
-const selectAtMonth = document.getElementById("at-month");
-const birthYear = document.getElementById("birth-year");
-const atYear = document.getElementById("at-year");
+/* 1. select all needy elements from dom  */
+const ageButton = document.getElementById("calculate-age-btn");
+const getUserAgeField = document.getElementById("yourAge");
+const todayDateField = document.getElementById("todayDate");
+const collapsed = document.getElementById('collapsed');
 
-const calculateAgeBtn = document.getElementById("calculate-btn")
+/* 2. set today date as default date  */
+const setDefaultDate = () => {
+    let todayDate = new Date();
+    let getYear = todayDate.getFullYear();
+    let getMon = todayDate.getMonth() < 10 ? '0' + (todayDate.getMonth() + 1) : (todayDate.getMonth() + 1);
+    let getDay = todayDate.getDate() < 10 ? '0' + todayDate.getDate() : todayDate.getDate();
+    let fullDate = `${getYear}-${getMon}-${getDay}`;
+    todayDateField.value = fullDate;
+}
 
-const monthsArray = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+// error function 
+const getError = (errorText) => {
+    collapsed.classList.add('show')
+    collapsed.innerHTML = errorText;
+}
+/* 2. create a function for get value from input date  */
+ageButton.addEventListener("click", () => {
+    let getUserDate = getUserAgeField.value;
+    let today = todayDateField.value;
+    const userDate = new Date(getUserDate);
+    const getTodayDate = new Date(today);
+    if (getUserAgeField.value === '' || todayDateField.value === '') {
+        getError(`<div class="alert alert-danger mb-0">All field are required.</div>`)
+    } else if (getUserDate === today) {
+        getError(`<div class="alert alert-danger mb-0">🤣Hahah! You put invalid date.</div>`)
+    } else if ((userDate.getFullYear() === getTodayDate.getFullYear() && userDate.getMonth() > getTodayDate.getMonth())) {
+        getError(`<div class="alert alert-danger mb-0">🤣Hahah! Invalid Months</div>`);
+    } else if (userDate.getFullYear() === getTodayDate.getFullYear() && userDate.getDate() >= getTodayDate.getDate() && userDate.getMonth() >= getTodayDate.getMonth()) {
+        getError(`<div class="alert alert-danger mb-0">🤣Hahah! Invalid Date</div>`);
+    } else {
+        collapsed.classList.add('show')
+        // user input date 
+        let inputDate = userDate.getDate();
+        let inputMonth = 1 + userDate.getMonth();
+        let inputYear = userDate.getFullYear();
 
-const daysArray = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+        // today default date 
+        let todayDate = getTodayDate.getDate();
+        let todayMonth = 1 + getTodayDate.getMonth();
+        let todayYear = getTodayDate.getFullYear();
 
-monthsArray.forEach((month, index)=>{
-    selectBirthMonth.innerHTML += `<option value=${index + 1}>${month}</option>`;
-    selectAtMonth.innerHTML += `<option value=${index + 1}>${month}</option>`;
+        const monthsArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (inputDate > todayDate) {
+            todayDate = todayDate + monthsArr[todayMonth - 1];
+            todayMonth = todayMonth - 1;
+        }
+
+        if (inputMonth > todayMonth) {
+            todayMonth = todayMonth + 12;
+            todayYear = todayYear - 1;
+        }
+
+        let year = todayYear - inputYear;
+        let month = todayMonth - inputMonth;
+        let date = todayDate - inputDate;
+        let getTotalWeeks = Math.floor(((((year * 12) + month) * 30) + date) / 7);
+        let getTotalDays = ((((year * 12) + month) * 30) + date);
+        let getTotalHours = getTotalDays * 24;
+        let getTotalMin = getTotalHours * 60;
+        let getTotalSec = getTotalMin * 60;
+        collapsed.innerHTML = `
+                            <div class="card-header">
+                                <h3>Now Your Age ${year} Years ${month} Months ${date} Days</h3>
+                            </div>
+                            <div class="card-body" id="age-body">
+                                <table class="table">
+                                    <tr>
+                                        <th>Total Year</th>
+                                        <td>${year} Years</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Months</th>
+                                        <td>${month} Month</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Day</th>
+                                        <td>${date} Days</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Weeks</th>
+                                        <td>${getTotalWeeks ? getTotalWeeks: '0'} Weeks</td>
+                                    </tr>
+
+                                </table>
+                                <table class="table">
+                                    <tr>
+                                        <th>Total days</th>
+                                        <td>${getTotalDays ? getTotalDays: '0'} days (Approx)</td>
+                                        <th>Total Hours</th>
+                                        <td>${getTotalHours ? getTotalHours: '0'} hr (Approx)</td>
+                                        <th>Total Minutes</th>
+                                        <td>${getTotalMin ? getTotalMin: '0'} min (Approx)</td>
+                                        <th>Total Seconds</th>
+                                        <td>${getTotalSec ? getTotalSec: '0'} sec (Approx)</td>
+                                    </tr>
+                                </table>
+                            </div>`;
+    }
 })
 
-const calculateAge = ()=>{
-  const date1 = inputDate1.value;
-  const date2 = inputDate2.value;
-  const month1 = selectBirthMonth.value;
-  const month2 = selectAtMonth.value;
-  const year1 = birthYear.value;
-  const year2 = atYear.value;
-
-  const birthDate = new Date(month1 + "/" + date1 + "/" + year1);
-  const atDate = new Date(month2 + "/" + date2 + "/" + year2);
-
-    console.log(birthDate.getYear(), atDate)
-
-    showOutput(birthDate, atDate)
-}
-
-
-calculateAgeBtn.addEventListener("click",()=>calculateAge())
-
-
-const outputContent = document.getElementById('output-content')
-
-
-const startAnim = ()=>{
-    outputDiv.style.display = "block"
-    inputDiv.classList.add("inputAnimation");
-    outputDiv.classList.add("outputAnimation");
-}
-
-
-const showOutput = (birthdate, atdate) =>{
-
-    atSomeDate = inputDate2.value + " " + monthsArray[selectAtMonth.value - 1] + " " + atYear.value + " (" + daysArray[atdate.getDay()] + ")"
-    console.log(atSomeDate);
-    const dayDuration = 24;
-
-    // Total difference in years and remaining months, days.
-    const daysInMonth = (month, year)=>{
-      return new Date(year, month, 0).getDate()
-    }
-
-    let timeDiffInSeconds = Math.abs(atdate - birthdate) / 1000;
-    timeDiff = timeDiffInSeconds / (60*60*24)
-    diffYears = (Math.floor(timeDiff/365.25) == 0 && selectAtMonth.value == selectBirthMonth.value && inputDate1.value == inputDate2.value) ? Math.abs(Math.floor(timeDiff/365.25)) + 1 :  Math.abs(Math.floor(timeDiff/365.25))
-
-    let RemainingDays_Year = (Number(inputDate2.value) >= Number(inputDate1.value)) ? Number(inputDate2.value) - Number(inputDate1.value) : (daysInMonth(selectAtMonth.value - 1, atYear.value) - ((daysInMonth(selectAtMonth.value - 1, atYear.value) === 31) ? (Math.abs((Number(inputDate2.value) - Number(inputDate1.value)))) : Math.abs((Number(inputDate2.value) - Number(inputDate1.value))) - 1))
-    // RemainingDays_Year = 
-    console.log(RemainingDays_Year)
-    
-    // let RemainingMonths = (selectAtMonth.value > selectBirthMonth.value) ? Math.abs(selectAtMonth.value  - selectBirthMonth.value) : 12 - Math.abs(selectAtMonth.value  - selectBirthMonth.value)
-
-    if(selectAtMonth.value > selectBirthMonth.value){
-      RemainingMonths = Math.abs(selectAtMonth.value - selectBirthMonth.value); 
-    }
-    else if (selectAtMonth.value < selectBirthMonth.value){
-      RemainingMonths = 12 - Math.abs(selectAtMonth.value  - selectBirthMonth.value)
-    }
-    else if(selectAtMonth.value == selectBirthMonth.value){
-      RemainingMonths = 0
-    }
-
-      console.log(RemainingMonths);
-    // Check if the month has completed or not in both directions
-    RemainingMonths = (Number(inputDate2.value) < Number(inputDate1.value) && selectAtMonth.value > selectBirthMonth.value) ? RemainingMonths - 1 : RemainingMonths ;
-    // console.log(RemainingMonths);
-    RemainingMonths = (Number(inputDate2.value) >= Number(inputDate1.value) && selectAtMonth.value <= selectBirthMonth.value) ? RemainingMonths : (selectBirthMonth.value < selectAtMonth.value ? RemainingMonths : RemainingMonths - 1) ;
-    // console.log(RemainingMonths);
-    RemainingMonths = (Number(inputDate2.value) < Number(inputDate1.value) && selectAtMonth.value == selectBirthMonth.value) ? 11 : RemainingMonths;
-    // console.log(RemainingMonths);
-
-    // console.log(daysInMonth(selectAtMonth.value, atYear.value));
-    // console.log(diffYears);
-    // console.log(RemainingMonths);
-    // console.log(RemainingDays_Year)
-
-    // Total difference in months and remaining days
-    let totalDiffMonths = (diffYears*12) + RemainingMonths
-    RemainingDays_Month = RemainingDays_Year
-    // console.log(totalDiffMonths)
-    // console.log(RemainingDays_Month)
-
-    // Total difference in weeks and remaining days
-    let totalDiffWeeks = Math.floor(timeDiffInSeconds/(7*24*60*60));
-    RemainingDays_Week = Math.round((timeDiffInSeconds / (7 * 24 * 60 * 60) % 1) * 7)
-    // console.log(totalDiffWeeks);
-    // console.log(RemainingDays_Week)
-
-    // Total difference in hours
-    let totalHours = Math.floor(timeDiffInSeconds/(60*60))
-
-    let totalDays = Math.floor(totalHours/24)
-
-
-    outputContent.innerHTML = "";
-
-   if ((atdate - birthdate) > 0) {
-     outputContent.innerHTML += `
-                <h3><< Check It >>:</h3>
-                <ul>
-                    ${
-                      diffYears > 0
-                        ? `<li>${diffYears} ${
-                            diffYears > 1 ? "years" : "year"
-                          } ${RemainingMonths} ${
-                            RemainingMonths == 0 || RemainingMonths == 1
-                              ? "month"
-                              : "months"
-                          } &  ${RemainingDays_Year} ${
-                            RemainingDays_Year > 1 ? "days" : "day"
-                          }</li> `
-                        : ""
-                    }
-                    ${
-                      totalDiffMonths > 0
-                        ? `<li>${totalDiffMonths} ${
-                            totalDiffMonths > 1 ? "months" : "month"
-                          } and ${RemainingDays_Month} ${
-                            RemainingDays_Month > 1 ? "days" : "day"
-                          }</li>`
-                        : ""
-                    }
-                    ${
-                      totalDiffWeeks > 0
-                        ? `<li>${totalDiffWeeks} weeks ${RemainingDays_Week} days</li>`
-                        : ""
-                    }
-                    ${totalDays > 0 ? `<li>${totalDays} days</li>` : ""}
-                    ${totalHours > 0 ? `<li>${totalHours} hours</li>` : ""}
-                    ${
-                      timeDiffInSeconds / 60 > 0
-                        ? `<li>${timeDiffInSeconds / 60} minutes</li>`
-                        : ""
-                    }
-                    ${
-                      timeDiffInSeconds > 0
-                        ? `<li>${timeDiffInSeconds} seconds</li> `
-                        : ""
-                    }
-                </ul>
-    `;
-   } 
-   else {
-     outputContent.innerHTML =
-            "Date Must be earlier than the day at which you want to calculate the difference";
-   }
-
-   startAnim()
-
-}
+/* calling all necessary function  */
+setDefaultDate();
