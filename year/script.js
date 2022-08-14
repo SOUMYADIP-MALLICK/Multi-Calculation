@@ -36,11 +36,11 @@ ageButton.addEventListener("click", () => {
     if (getUserAgeField.value === '' || todayDateField.value === '') {
         getError(`<div class="alert alert-danger mb-0">All field are required.</div>`)
     } else if (getUserDate === today) {
-        getError(`<div class="alert alert-danger mb-0">🤣Hahah! You put invalid date.</div>`)
+        getError(`<div class="alert alert-danger mb-0">You put invalid date.</div>`)
     } else if ((userDate.getFullYear() === getTodayDate.getFullYear() && userDate.getMonth() > getTodayDate.getMonth())) {
-        getError(`<div class="alert alert-danger mb-0">🤣Hahah! Invalid Months</div>`);
+        getError(`<div class="alert alert-danger mb-0">Invalid Months</div>`);
     } else if (userDate.getFullYear() === getTodayDate.getFullYear() && userDate.getDate() >= getTodayDate.getDate() && userDate.getMonth() >= getTodayDate.getMonth()) {
-        getError(`<div class="alert alert-danger mb-0">🤣Hahah! Invalid Date</div>`);
+        getError(`<div class="alert alert-danger mb-0">nvalid Date</div>`);
     } else {
         collapsed.classList.add('show')
         // user input date 
@@ -75,7 +75,7 @@ ageButton.addEventListener("click", () => {
         let getTotalSec = getTotalMin * 60;
         collapsed.innerHTML = `
                             <div class="card-header">
-                                <h3>Now Your Age ${year} Years ${month} Months ${date} Days</h3>
+                                <h3>The Difference is ${year} Years ${month} Months ${date} Days</h3>
                             </div>
                             <div class="card-body" id="age-body">
                                 <table class="table">
