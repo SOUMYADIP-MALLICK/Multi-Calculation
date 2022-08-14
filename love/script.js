@@ -28,13 +28,13 @@ button.addEventListener('click', function (event) {
     let NameArray = name.split('');
     for (i = 0; i < NameArray.length; i++) {
       if (NameArray[i].includes('A')) {
-        Score += 15;
+        Score += 25;
       } else if (NameArray[i].includes('E')) {
-        Score += 14;
+        Score += 44;
       } else if (NameArray[i].includes('I')) {
-        Score += 19;
+        Score += 59;
       } else if (NameArray[i].includes('O')) {
-        Score += 16;
+        Score += 36;
       } else if (NameArray[i].includes('U')) {
         Score += 18;
       }
