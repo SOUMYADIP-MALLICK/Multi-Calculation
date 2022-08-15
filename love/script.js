@@ -74,13 +74,13 @@ button.addEventListener('click', function (event) {
 
     document.querySelector('h1').innerHTML = `Your crush loves  ${lovePercent}% to you`;
     if (lovePercent >= 75) {
-      document.querySelector('h2').innerHTML = `yYu are in a proper relationship`;
-    } else if(lovePercent >= 60){
+      document.querySelector('h2').innerHTML = `You are in a proper relationship`;
+    } else if(lovePercent >= 50){
       document.querySelector('h2').innerHTML = `Seems that you had choosen a right person . Keep it up.`;
-    } else if (lovePercent >= 50){
-      document.querySelector('h2').innerHTML = `Seems that your crush is not switable for you but not to worry try to propose another`;
+    } else if (lovePercent >= 30){
+      document.querySelector('h2').innerHTML = `Seems that your crush has not too much feelings for you but not to worry try to propose another one`;
     }
-    else if (lovePercent < 50){
+    else if (lovePercent < 30){
       document.querySelector('h2').innerHTML = `Single forever. your crush has not any feeling for you`;
     }
 
